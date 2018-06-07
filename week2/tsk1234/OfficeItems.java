@@ -1,4 +1,4 @@
-package spb.epam.tc.week2.tsk1234;
+package tcepam.week2.tsk1234;
 
 public class OfficeItems implements Comparable{
     private String name;
