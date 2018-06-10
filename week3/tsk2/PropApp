@@ -1,0 +1,51 @@
+package tcepam.week3.tsk2;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+public class PropApp {
+
+    private Locale defaultLocale = Locale.getDefault();
+    private Locale lvLocale = new Locale("lv", "LV");
+
+    private Scanner sc = new Scanner(System.in);
+
+    public void displayLv() {
+        ResourceBundle bundleLv = ResourceBundle.getBundle("strings", lvLocale);
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(bundleLv.getString("q" + i));
+        }
+    }
+
+    public void displayDefault() {
+        ResourceBundle bundleDefault = ResourceBundle.getBundle("strings", defaultLocale);
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(bundleDefault.getString("q" + i));
+        }
+    }
+
+    public static void main(String[] args) {
+
+        PropApp propApp = new PropApp();
+
+        ResourceBundle bundle;
+        System.out.println("Press 0 for DEFAULT or 1 for LATVIAN");
+
+        int number = Integer.parseInt(propApp.sc.nextLine());
+
+        if (number == 0) {
+            bundle = ResourceBundle.getBundle("strings", propApp.defaultLocale);
+            propApp.displayDefault();
+        } else {
+            bundle = ResourceBundle.getBundle("strings", propApp.lvLocale);
+            propApp.displayLv();
+        }
+
+        System.out.println("Answer on what question do you want to get?");
+
+        int qNumber = Integer.parseInt(propApp.sc.nextLine());
+
+        System.out.println("Here it is: " + bundle.getString("a" + qNumber));
+    }
+}
